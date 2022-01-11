@@ -1,0 +1,22 @@
+.paged {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: rgba(110, 19, 19, 0.867);
+    border-radius: 10px;
+}
+.numbers {
+    margin: 10px;
+    padding: 10px;
+    background: none;
+    border: none;
+    border-radius: 5px;
+}
+
+.numbers:focus {
+    background: rgb(95, 29, 29);
+}
+
+.numbers:hover{
+    background: rgb(95, 29, 29);
+}

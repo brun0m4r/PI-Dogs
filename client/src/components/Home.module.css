@@ -1,0 +1,28 @@
+.container{
+    border-radius: 10px;
+    margin: auto 50px;
+    box-shadow: 0 10px 30px #000;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    background-color: rgba(243,243,243,0.7);
+    color: #000;
+    font-family: 'Amatic SC', cursive;
+    font-size: 25px;
+}
+
+body{
+    background: url("https://st2.depositphotos.com/5448718/10569/v/600/depositphotos_105699982-stock-illustration-vector-seamless-pattern-with-cat.jpg");
+    background-attachment: fixed;
+}
+
+.loading{
+    max-width: 500px;
+}
+
+.jake {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 200px;
+    z-index: 2;
+}

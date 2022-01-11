@@ -1,0 +1,25 @@
+.loading {
+    max-width: 300px;
+    margin: 100px;
+}
+
+.img {
+    max-width: 500px;
+    border-radius: 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.card {
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    max-width: max-content;
+    padding: 10px;
+    background-color: rgba(27, 27, 27, 0.7);
+    border-radius: 30px;
+    margin: 20px;
+}
