@@ -153,8 +153,13 @@ export default function BreedCreate() {
                 <div>
                     <label>Temperaments</label>
                     <select onChange={e => handleSelect(e)}>
+                        <option value="" disabled selected >select your option</option>
                         {
-                            temperaments?.map(t => <option key={t.name} value={t.name}>{t.name}</option>)
+                            temperaments?.map(t =>
+                                temperaments.indexOf(t.name) >= 0
+                                ? (<option key={t.name} disabled value={t.name}>{t.name}</option>)
+                                : (<option key={t.name} value={t.name}>{t.name}</option>)
+                                )
                         }
                     </select>
                 </div>

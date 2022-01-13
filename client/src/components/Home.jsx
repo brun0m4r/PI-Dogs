@@ -53,7 +53,7 @@ export default function Home () {
                                 <h1>YOU ARE IN HOME</h1>
                                 <Paged dogs={dogs.length} dogsPerPage={dogsPerPage} paged={paged} />
                             </div>
-                            <SearchBar />
+                            <SearchBar setCurrentPage={setCurrentPage} paged={paged} />
                             <button onClick={e => handleClick(e)}>Refresh Dogs</button>
                             <div>
                             {

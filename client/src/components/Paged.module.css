@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    background: rgba(110, 19, 19, 0.867);
+    background: rgb(255, 160, 35);
     border-radius: 10px;
 }
 .numbers {
@@ -14,9 +14,9 @@
 }
 
 .numbers:focus {
-    background: rgb(95, 29, 29);
+    background: rgb(95, 64, 29);
 }
 
 .numbers:hover{
-    background: rgb(95, 29, 29);
+    background: rgb(95, 64, 29);
 }

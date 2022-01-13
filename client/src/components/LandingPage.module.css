@@ -3,7 +3,8 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    background-image: url('https://st2.depositphotos.com/5448718/10569/v/600/depositphotos_105699978-stock-illustration-vector-seamless-pattern-with-cat.jpg');
+    /* background-image: url('https://st2.depositphotos.com/5448718/10569/v/600/depositphotos_105699978-stock-illustration-vector-seamless-pattern-with-cat.jpg'); */
+    background: url("https://st2.depositphotos.com/5448718/10569/v/600/depositphotos_105699982-stock-illustration-vector-seamless-pattern-with-cat.jpg");
 }
 
 .container {

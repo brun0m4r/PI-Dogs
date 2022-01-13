@@ -64,7 +64,7 @@ const reducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                dogs: weight,
+                dogs: action.payload === '...' ? state.allDogs : weight,
             }
         case ORDER_WEIGHT_MAX:
             const max = action.payload === 'asc'

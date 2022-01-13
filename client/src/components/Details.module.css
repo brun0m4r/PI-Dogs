@@ -22,4 +22,7 @@
     background-color: rgba(27, 27, 27, 0.7);
     border-radius: 30px;
     margin: 20px;
+    top: -100%;
+    transition: .3s;
+    top: 100%;
 }
