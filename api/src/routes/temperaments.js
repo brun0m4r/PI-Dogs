@@ -20,7 +20,8 @@ router.get('/', async (req, res) =>{
     const temperament = mapped.map(t => {
         for(let i = 0; i < t?.length; i++) return t[i];
     });
-    temperament.forEach(t => {
+    const unique = [...new Set(temperament)];
+    unique.forEach(t => {
         if(t){
         Temperament.findOrCreate({
             where: { name: t }

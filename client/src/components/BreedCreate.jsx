@@ -20,7 +20,8 @@ export default function BreedCreate() {
 
     const dispatch =  useDispatch();
     const history = useHistory();
-    const temperaments = useSelector(state => state.temperaments)
+    const temperaments = useSelector(state => state.temperaments);
+    const unique = [...new Set(temperaments)];
 
     useEffect(() => {
         dispatch(getTemperaments());
@@ -79,7 +80,7 @@ export default function BreedCreate() {
                 <button>Home</button>
             </Link>
             <form onSubmit={e => handleSubmit(e)}>
-                <div>
+                <div className={s.contName}>
                     <label>*Name</label>
                     <input
                         type='text'
@@ -87,9 +88,8 @@ export default function BreedCreate() {
                         name="name"
                         onChange={e => handleChange(e)}
                         required={true}
+                        className={s.input}
                     />
-                </div>
-                <div>
                     <label>*Image</label>
                     <input
                         type='text'
@@ -97,9 +97,10 @@ export default function BreedCreate() {
                         name="image"
                         onChange={e => handleChange(e)}
                         required={true}
+                        className={s.input}
                     />
                 </div>
-                <div>
+                <div className={s.contWH}>
                     <label>*Weight Min</label>
                     <input
                         type='number'
@@ -108,9 +109,8 @@ export default function BreedCreate() {
                         min="0"
                         onChange={e => handleChange(e)}
                         required={true}
+                        className={s.input}
                     />
-                </div>
-                <div>
                     <label>*Weight Max</label>
                     <input
                         type='number'
@@ -119,9 +119,8 @@ export default function BreedCreate() {
                         max="100"
                         onChange={e => handleChange(e)}
                         required={true}
+                        className={s.input}
                     />
-                </div>
-                <div>
                     <label>Height Min</label>
                     <input
                         type='number'
@@ -129,9 +128,8 @@ export default function BreedCreate() {
                         name="height_min"
                         min="1"
                         onChange={e => handleChange(e)}
+                        className={s.input}
                     />
-                </div>
-                <div>
                     <label>Height Max</label>
                     <input
                         type='number'
@@ -139,8 +137,10 @@ export default function BreedCreate() {
                         name="height_max"
                         max="200"
                         onChange={e => handleChange(e)}
+                        className={s.input}
                     />
                 </div>
+
                 <div>
                     <label>Life Span</label>
                     <input
@@ -148,6 +148,7 @@ export default function BreedCreate() {
                         value={state.life_span}
                         name="life_span"
                         onChange={e => handleChange(e)}
+                        className={s.input}
                     />
                 </div>
                 <div>
@@ -168,7 +169,7 @@ export default function BreedCreate() {
             <div>
                     <ul>
                         {
-                            state.temperament?.map(t =>
+                            [...new Set(state.temperament)].map(t =>
                             <div>
                                 <li>{t}</li>
                                 <button onClick={e => handleDelete(e)} name={t}>X</button>

@@ -28,13 +28,17 @@ export default function Home () {
         setCurrentPage(numPage);
     }
 
-    useEffect(() => {
-        dispatch(getDogs());
-        dispatch(getTemperaments());
+    const newLoading = () => {
         setLoading(true);
         setTimeout(() => {
             setLoading(false)
         }, 1500);
+    }
+
+    useEffect(() => {
+        dispatch(getDogs());
+        dispatch(getTemperaments());
+        newLoading();
     },[]);
 
     const handleClick = e => {
@@ -50,11 +54,11 @@ export default function Home () {
                             <div className={s.container}>
                                 <Filter setOrderWeight={setOrderWeight} setOrderName={setOrderName} temperaments={temperaments} paged={paged} setCurrentPage={setCurrentPage} />
                                 <Link to='/breed'><button>Create a new breed</button></Link>
+                                <button className={s.refresh} onClick={e => handleClick(e)}>Refresh Dogs</button>
                                 <h1>YOU ARE IN HOME</h1>
                                 <Paged dogs={dogs.length} dogsPerPage={dogsPerPage} paged={paged} />
                             </div>
-                            <SearchBar setCurrentPage={setCurrentPage} paged={paged} />
-                            <button onClick={e => handleClick(e)}>Refresh Dogs</button>
+                            <SearchBar newLoading={newLoading} setCurrentPage={setCurrentPage} paged={paged} />
                             <div>
                             {
                                 loading || !currentDogs.length

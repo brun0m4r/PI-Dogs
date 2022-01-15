@@ -23,6 +23,8 @@
     border-radius: 30px;
     margin: 20px;
     top: -100%;
-    transition: .3s;
+    transition: .3s ease;
     top: 100%;
+    font-family: 'Dongle', sans-serif;
+    font-size: 25px;
 }

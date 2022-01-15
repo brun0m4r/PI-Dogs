@@ -10,6 +10,16 @@
     font-size: 25px;
 }
 
+.refresh{
+    border: none;
+    border-radius: 5px;
+    height: 25px;
+    margin: 10px;
+    background: rgba(255, 160, 35, 0.787);
+    font-family: 'Amatic SC', cursive;
+    font-size: 20px;
+}
+
 body{
     background-image: url('https://st2.depositphotos.com/5448718/10569/v/600/depositphotos_105699978-stock-illustration-vector-seamless-pattern-with-cat.jpg');
     background-attachment: fixed;

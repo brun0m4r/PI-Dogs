@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { getNameDog } from "../actions";
 import s from './SearchBar.module.css';
 
-export default function SearchBar({ setCurrentPage, paged }) {
+export default function SearchBar({ newLoading, setCurrentPage, paged }) {
     const dispatch = useDispatch();
     const [ search, setSearch ] = useState();
 
@@ -14,6 +14,7 @@ export default function SearchBar({ setCurrentPage, paged }) {
     const handleClick = e => {
         e.preventDefault();
         dispatch(getNameDog(search))
+        newLoading();
         setSearch('');
         setCurrentPage(1);
     }

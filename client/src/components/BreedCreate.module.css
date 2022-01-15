@@ -1,3 +1,33 @@
 .container {
-    background-color: #000;
+    background-color: rgba(58, 58, 58, 0.787);
+    max-width: 600px;
+    margin: auto;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    font-family: 'Dongle', sans-serif;
+    font-size: 30px;
+    color: #fff;
+    justify-content: center;
+}
+
+.contName {
+    display: flex;
+    padding: 10px;
+}
+
+.contWH {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.input {
+    padding: .7em;
+    border: none;
+    background: none;
+    outline: 0;
+    color: #fff;
+    border-bottom: 1px solid #d63031;
 }

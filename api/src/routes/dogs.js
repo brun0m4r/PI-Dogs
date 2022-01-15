@@ -95,7 +95,8 @@ router.post('/', async (req, res) => {
         height_max,
         createdInDB
     });
-    temperament.map(async t => {
+    const unique = [...new Set(temperament)];
+    unique.map(async t => {
         const tDB = await Temperament.findAll({
             where: { name: t },
             include: [ Dog ],
