@@ -10,6 +10,7 @@ export const POST_NEW_breed = 'POST_NEW_breed';
 export const DETAILS = 'DETAILS';
 export const ORDER_WEIGHT_MAX = 'ORDER_WEIGHT_MAX';
 export const SEARCH_NAME = 'SEARCH_NAME';
+export const DELETE_BREED = 'DELETE_BREED';
 
 export const getDogs = () => dispatch => {
     return fetch('http://localhost:3001/dogs')
@@ -91,4 +92,8 @@ export const getNameDog = name => async dispatch => {
             payload: error,
         }
     }
+};
+
+export const deleteBreed = payload => async dispatch => {
+    return await axios.delete('http://localhost:3001/dogs', {data: payload});
 };

@@ -105,3 +105,18 @@ router.post('/', async (req, res) => {
     })
     res.send('dog created successfully');
 });
+
+router.delete('/', async(req, res) => {
+    try {
+        const { id } = req.body;
+        await Dog.destroy({
+            where: {
+                id,
+            }
+        });
+        res.status(200).send('breed eliminated');
+    } catch(error) {
+        console.log(error);
+        res.status(400).send('can not find breed');
+    }
+})

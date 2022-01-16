@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { getTemperaments, postNewbreed } from "../actions";
+import { deleteBreed, getDogs, getTemperaments, postNewbreed } from "../actions";
 import { Link, useHistory } from 'react-router-dom';
 import s from './BreedCreate.module.css'
+import Cards from "./Cards";
 
 
 export default function BreedCreate() {
     const [ buttonSubmit, setButton ] = useState(false);
+    const [ loading, setLoading ] = useState(false);
     const [ state, setState ] = useState({
         name: '',
         weight_min: '',
@@ -21,11 +23,21 @@ export default function BreedCreate() {
     const dispatch =  useDispatch();
     const history = useHistory();
     const temperaments = useSelector(state => state.temperaments);
+    let createdDogs = useSelector(state => state.allDogs.filter(d => d.createdInDB));
     const unique = [...new Set(temperaments)];
 
+    const newLoading = () => {
+        setLoading(true);
+        setTimeout(() => {
+            setLoading(false)
+        }, 1300);
+    }
+
     useEffect(() => {
+        dispatch(getDogs());
         dispatch(getTemperaments());
-    },[dispatch]);
+        newLoading();
+    },[]);
 
     const validate = () => {
         if(state.name && state.weight_max && state.weight_min && state.image) {
@@ -73,112 +85,123 @@ export default function BreedCreate() {
         history.push('/home');
     };
 
-    return(
-        <div className={s.container}>
-            <h2>Create a new breed</h2>
-            <Link to='/home'>
-                <button>Home</button>
-            </Link>
-            <form onSubmit={e => handleSubmit(e)}>
-                <div className={s.contName}>
-                    <label>*Name</label>
-                    <input
-                        type='text'
-                        value={state.name}
-                        name="name"
-                        onChange={e => handleChange(e)}
-                        required={true}
-                        className={s.input}
-                    />
-                    <label>*Image</label>
-                    <input
-                        type='text'
-                        value={state.image}
-                        name="image"
-                        onChange={e => handleChange(e)}
-                        required={true}
-                        className={s.input}
-                    />
-                </div>
-                <div className={s.contWH}>
-                    <label>*Weight Min</label>
-                    <input
-                        type='number'
-                        value={state.weight_min}
-                        name="weight_min"
-                        min="0"
-                        onChange={e => handleChange(e)}
-                        required={true}
-                        className={s.input}
-                    />
-                    <label>*Weight Max</label>
-                    <input
-                        type='number'
-                        value={state.weight_max}
-                        name="weight_max"
-                        max="100"
-                        onChange={e => handleChange(e)}
-                        required={true}
-                        className={s.input}
-                    />
-                    <label>Height Min</label>
-                    <input
-                        type='number'
-                        value={state.height_min}
-                        name="height_min"
-                        min="1"
-                        onChange={e => handleChange(e)}
-                        className={s.input}
-                    />
-                    <label>Height Max</label>
-                    <input
-                        type='number'
-                        value={state.height_max}
-                        name="height_max"
-                        max="200"
-                        onChange={e => handleChange(e)}
-                        className={s.input}
-                    />
-                </div>
 
+    return(
+        <div>
+            <div className={s.container}>
+                <h2>Create a new breed</h2>
+                <Link to='/home'>
+                    <button>Home</button>
+                </Link>
+                <form onSubmit={e => handleSubmit(e)}>
+                    <div className={s.contName}>
+                        <label>*Name</label>
+                        <input
+                            type='text'
+                            value={state.name}
+                            name="name"
+                            onChange={e => handleChange(e)}
+                            required={true}
+                            className={s.input}
+                        />
+                        <label>*Image</label>
+                        <input
+                            type='text'
+                            value={state.image}
+                            name="image"
+                            onChange={e => handleChange(e)}
+                            required={true}
+                            className={s.input}
+                        />
+                    </div>
+                    <div className={s.contWH}>
+                        <label>*Weight Min</label>
+                        <input
+                            type='number'
+                            value={state.weight_min}
+                            name="weight_min"
+                            min="0"
+                            onChange={e => handleChange(e)}
+                            required={true}
+                            className={s.input}
+                        />
+                        <label>*Weight Max</label>
+                        <input
+                            type='number'
+                            value={state.weight_max}
+                            name="weight_max"
+                            max="100"
+                            onChange={e => handleChange(e)}
+                            required={true}
+                            className={s.input}
+                        />
+                        <label>Height Min</label>
+                        <input
+                            type='number'
+                            value={state.height_min}
+                            name="height_min"
+                            min="1"
+                            onChange={e => handleChange(e)}
+                            className={s.input}
+                        />
+                        <label>Height Max</label>
+                        <input
+                            type='number'
+                            value={state.height_max}
+                            name="height_max"
+                            max="200"
+                            onChange={e => handleChange(e)}
+                            className={s.input}
+                        />
+                    </div>
+
+                    <div>
+                        <label>Life Span</label>
+                        <input
+                            type='text'
+                            value={state.life_span}
+                            name="life_span"
+                            onChange={e => handleChange(e)}
+                            className={s.input}
+                        />
+                    </div>
+                    <div>
+                        <label>Temperaments</label>
+                        <select onChange={e => handleSelect(e)}>
+                            <option value="" disabled selected >select your option</option>
+                            {
+                                temperaments?.map(t =>
+                                    temperaments.indexOf(t.name) >= 0
+                                    ? (<option key={t.name} disabled value={t.name}>{t.name}</option>)
+                                    : (<option key={t.name} value={t.name}>{t.name}</option>)
+                                    )
+                            }
+                        </select>
+                    </div>
+                    <button type='submit'>Create</button>
+                </form>
                 <div>
-                    <label>Life Span</label>
-                    <input
-                        type='text'
-                        value={state.life_span}
-                        name="life_span"
-                        onChange={e => handleChange(e)}
-                        className={s.input}
-                    />
-                </div>
-                <div>
-                    <label>Temperaments</label>
-                    <select onChange={e => handleSelect(e)}>
-                        <option value="" disabled selected >select your option</option>
-                        {
-                            temperaments?.map(t =>
-                                temperaments.indexOf(t.name) >= 0
-                                ? (<option key={t.name} disabled value={t.name}>{t.name}</option>)
-                                : (<option key={t.name} value={t.name}>{t.name}</option>)
+                        <ul>
+                            {
+                                [...new Set(state.temperament)].map(t =>
+                                <div>
+                                    <li>{t}</li>
+                                    <button onClick={e => handleDelete(e)} name={t}>X</button>
+                                </div>
                                 )
-                        }
-                    </select>
-                </div>
-                <button type='submit'>Create</button>
-            </form>
+                            }
+                        </ul>
+                    </div>
+                <label>*required</label>
+            </div>
             <div>
-                    <ul>
-                        {
-                            [...new Set(state.temperament)].map(t =>
-                            <div>
-                                <li>{t}</li>
-                                <button onClick={e => handleDelete(e)} name={t}>X</button>
-                            </div>
-                            )
-                        }
-                    </ul>
-                </div>
-            <label>*required</label>
+                {
+                    loading
+                    ? <img className={s.loading} src="https://64.media.tumblr.com/0e0d397cf35e73323650fedebc4797df/tumblr_nacvecAASJ1tgzy56o1_250.gifv" />
+                    : (createdDogs.length ? <Cards newLoading={newLoading} dogs={createdDogs} remove={true}  /> : <p>no dog breeds created</p>)
+                }
+            </div>
+
         </div>
     );
 

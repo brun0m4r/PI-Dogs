@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { deleteBreed, getDogs } from "../actions";
 import CardDog from './CardDog';
 import s from './Cards.module.css';
 
-export default function Cards({ dogs }) {
+export default function Cards({ dogs, remove, newLoading }) {
+    const dispatch = useDispatch();
+    const removeFunction = e => {
+        dispatch(deleteBreed({
+            id: e.target.value
+        }));
+        dispatch(getDogs());
+        newLoading();
+    }
     return(
         <div className={s.container}>
             {
@@ -19,6 +29,8 @@ export default function Cards({ dogs }) {
                             height_max={d.height_max}
                             height_min={d.height_min}
                             temperament={d.temperament || d.temperaments}
+                            remove={remove}
+                            removeFunction={removeFunction}
                         />
                     )
                 })
