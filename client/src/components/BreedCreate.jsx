@@ -90,9 +90,9 @@ export default function BreedCreate() {
         <div>
             <div className={s.container}>
                 <h2>Create a new breed</h2>
-                <Link to='/home'>
-                    <button>Home</button>
-                </Link>
+                <button className={s.button}>
+                    <Link className={s.link} to='/home'>Home</Link>
+                </button>
                 <form onSubmit={e => handleSubmit(e)}>
                     <div className={s.contName}>
                         <label>*Name</label>
@@ -178,7 +178,7 @@ export default function BreedCreate() {
                             }
                         </select>
                     </div>
-                    <button type='submit'>Create</button>
+                    <button className={s.button} type='submit'>Create</button>
                 </form>
                 <div>
                         <ul>
@@ -198,7 +198,7 @@ export default function BreedCreate() {
                 {
                     loading
                     ? <img className={s.loading} src="https://64.media.tumblr.com/0e0d397cf35e73323650fedebc4797df/tumblr_nacvecAASJ1tgzy56o1_250.gifv" />
-                    : (createdDogs.length ? <Cards newLoading={newLoading} dogs={createdDogs} remove={true}  /> : <p>no dog breeds created</p>)
+                    : (createdDogs.length ? <Cards newLoading={newLoading} dogs={createdDogs} remove={true}  /> : <div className={s.noDogs}><p>no dog breeds created</p></div>)
                 }
             </div>
 

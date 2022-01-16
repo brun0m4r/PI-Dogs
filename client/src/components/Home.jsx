@@ -42,19 +42,20 @@ export default function Home () {
     },[]);
 
     const handleClick = e => {
-        dispatch(getDogs())
+        dispatch(getDogs());
+        newLoading();
     }
 
     return(
         <div>
                 {
-                    dogs.length ? (
+                    dogs.length || !loading ? (
                         <div>
                             <img className={s.jake} src="https://i.gifer.com/1fJm.gif"/>
                             <div className={s.container}>
                                 <Filter setOrderWeight={setOrderWeight} setOrderName={setOrderName} temperaments={temperaments} paged={paged} setCurrentPage={setCurrentPage} />
-                                <Link to='/breed'><button>Create a new breed</button></Link>
-                                <button className={s.refresh} onClick={e => handleClick(e)}>Refresh Dogs</button>
+                                <button className={s.button}><Link className={s.link} to='/breed'>Create a new breed</Link></button>
+                                <button className={s.button} onClick={e => handleClick(e)}>Refresh Dogs</button>
                                 <h1>YOU ARE IN HOME</h1>
                                 <Paged dogs={dogs.length} dogsPerPage={dogsPerPage} paged={paged} />
                             </div>
@@ -72,6 +73,10 @@ export default function Home () {
                                 )
                             }
                             </div>
+                            {
+                                !dogs.length &&
+                                <h1>Dogs not found</h1>
+                            }
                         </div>
                     ) :
                     <div>

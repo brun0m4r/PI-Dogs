@@ -9,7 +9,6 @@
     font-family: 'Dongle', sans-serif;
     font-size: 30px;
     color: #fff;
-    justify-content: center;
 }
 
 .contName {
@@ -29,5 +28,35 @@
     background: none;
     outline: 0;
     color: #fff;
-    border-bottom: 1px solid #d63031;
+    border-bottom: 1px solid #d69c30;
+    transition: .3s;
+}
+
+.input:hover,
+.input:focus {
+    border-bottom: 1px solid #d63030;
+}
+
+.button {
+    max-width: 75px;
+    height: 30px;
+    margin: auto;
+    border: none;
+    border-radius: 5px;
+    background: #d6a130;
+    font-family: 'Dongle', sans-serif;
+    font-size: 22px;
+    transition: .3s ease;
+}
+
+.button:hover {
+    background: #caab69;
+}
+
+.link {
+    text-decoration: none;
+    color: #000;
+}
+
+.noDogs {
 }

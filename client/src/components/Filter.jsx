@@ -8,11 +8,13 @@ export default function Filter({ temperaments, paged, setCurrentPage, setOrderNa
     const dispatch = useDispatch();
 
     const handleCreatedOrNot = e => {
-        dispatch(createdOrNot(e.target.value))
+        dispatch(createdOrNot(e.target.value));
+        setCurrentPage(1);
     }
 
     const handleTemperament = e => {
         dispatch(temperamentsDogs(e.target.value));
+        setCurrentPage(1);
     }
 
     const handleOrderByName = e => {
