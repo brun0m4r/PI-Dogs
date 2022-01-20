@@ -7,8 +7,9 @@ import Cards from "./Cards";
 
 
 export default function BreedCreate() {
-    const [ buttonSubmit, setButton ] = useState(false);
     const [ loading, setLoading ] = useState(false);
+    const [ disabled, setDisabled ] = useState(true);
+
     const [ state, setState ] = useState({
         name: '',
         weight_min: '',
@@ -33,17 +34,21 @@ export default function BreedCreate() {
         }, 1300);
     }
 
+    const validate = () => {
+        if(state.weight_max > state.weight_min) {
+            setDisabled(false);
+        }
+    }
+
     useEffect(() => {
         dispatch(getDogs());
         dispatch(getTemperaments());
         newLoading();
     },[]);
 
-    const validate = () => {
-        if(state.name && state.weight_max && state.weight_min && state.image) {
-            setButton(true);
-        }
-    }
+    useEffect(() => {
+        validate()
+    },[state.weight_max, state.weight_min]);
 
     const handleChange = e => {
         setState({
@@ -82,18 +87,19 @@ export default function BreedCreate() {
             image: '',
             temperament: []
         });
-        history.push('/home');
+        newLoading();
+        dispatch(getDogs());
     };
 
 
     return(
         <div>
+            <h2 className={s.title}>Create a new breed</h2>
             <div className={s.container}>
-                <h2>Create a new breed</h2>
                 <button className={s.button}>
                     <Link className={s.link} to='/home'>Home</Link>
                 </button>
-                <form onSubmit={e => handleSubmit(e)}>
+                <form className={s.form} onSubmit={e => handleSubmit(e)}>
                     <div className={s.contName}>
                         <label>*Name</label>
                         <input
@@ -121,6 +127,7 @@ export default function BreedCreate() {
                             value={state.weight_min}
                             name="weight_min"
                             min="0"
+                            max="150"
                             onChange={e => handleChange(e)}
                             required={true}
                             className={s.input}
@@ -130,69 +137,70 @@ export default function BreedCreate() {
                             type='number'
                             value={state.weight_max}
                             name="weight_max"
-                            max="100"
+                            min="0"
+                            max="150"
                             onChange={e => handleChange(e)}
                             required={true}
                             className={s.input}
                         />
-                        <label>Height Min</label>
+                        <label>*Height Min</label>
                         <input
                             type='number'
                             value={state.height_min}
                             name="height_min"
                             min="1"
+                            max="250"
                             onChange={e => handleChange(e)}
+                            required={true}
                             className={s.input}
                         />
-                        <label>Height Max</label>
+                        <label>*Height Max</label>
                         <input
                             type='number'
                             value={state.height_max}
                             name="height_max"
-                            max="200"
+                            min="1"
+                            max="250"
                             onChange={e => handleChange(e)}
+                            required={true}
                             className={s.input}
                         />
                     </div>
-
-                    <div>
-                        <label>Life Span</label>
-                        <input
-                            type='text'
-                            value={state.life_span}
-                            name="life_span"
-                            onChange={e => handleChange(e)}
-                            className={s.input}
-                        />
+                    <div className={s.contOther}>
+                            <label>Life Span</label>
+                            <input
+                                type='text'
+                                value={state.life_span}
+                                name="life_span"
+                                onChange={e => handleChange(e)}
+                                className={s.input}
+                            />
+                            <label>Temperaments</label>
+                            <select className={s.input} onChange={e => handleSelect(e)}>
+                                <option value="" disabled selected >select your option</option>
+                                {
+                                    temperaments?.map(t =>
+                                        temperaments.indexOf(t.name) >= 0
+                                        ? (<option key={t.name} disabled value={t.name}>{t.name}</option>)
+                                        : (<option key={t.name} value={t.name}>{t.name}</option>)
+                                        )
+                                }
+                            </select>
                     </div>
-                    <div>
-                        <label>Temperaments</label>
-                        <select onChange={e => handleSelect(e)}>
-                            <option value="" disabled selected >select your option</option>
-                            {
-                                temperaments?.map(t =>
-                                    temperaments.indexOf(t.name) >= 0
-                                    ? (<option key={t.name} disabled value={t.name}>{t.name}</option>)
-                                    : (<option key={t.name} value={t.name}>{t.name}</option>)
-                                    )
-                            }
-                        </select>
-                    </div>
-                    <button className={s.button} type='submit'>Create</button>
+                    <button className={s.button} disabled={disabled} type='submit'>Create</button>
                 </form>
                 <div>
-                        <ul>
+                        <div className={s.contTemperament}>
                             {
                                 [...new Set(state.temperament)].map(t =>
                                 <div>
-                                    <li>{t}</li>
-                                    <button onClick={e => handleDelete(e)} name={t}>X</button>
+                                    <button key={t} className={s.remove} onClick={e => handleDelete(e)} name={t}>{t}</button>
                                 </div>
                                 )
                             }
-                        </ul>
+                        </div>
                     </div>
-                <label>*required</label>
+                <label className={s.required}>*required</label>
             </div>
             <div>
                 {

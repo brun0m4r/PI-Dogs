@@ -10,15 +10,17 @@
     background: none;
     transition: all .3s ease;
     font-size: 18px;
-    color: #000;
+    color: #fff;
     outline: none;
     height: 55px;
+    border-radius: 20px;
 }
 
 .search {
-    background: rgba(255, 255, 255, 0.897);
+    background: none;
     border-radius: 30px;
     padding: 10px;
+    background: rgba(0, 0, 0, 0.897);
 }
 
 .button {
@@ -28,13 +30,13 @@
     background: none;
     color: #000;
     border: none;
-    border-radius: 30px;
     padding: 10px;
 }
 
 .img {
-    max-width: 30px;
+    max-width: 40px;
 }
+
 
 .search:hover > .input {
     width: 250px;

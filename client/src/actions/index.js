@@ -87,6 +87,7 @@ export const getNameDog = name => async dispatch => {
             payload: response.data,
         });
     } catch (error) {
+        alert('The breed that was searched not found')
         return {
             type: SEARCH_NAME,
             payload: error,

@@ -7,21 +7,23 @@ const { API_KEY } = process.env;
 const router = express.Router();
 module.exports = router;
 
-router.get('/', async (req, res) =>{
-    const url = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);
-    const mapped = await url?.data.map(t => {
-        if(t.temperament) return t.temperament.split(', ').map(t => {
-        if(t[0] == " ") {
-            return t.slice(1, -1);
-        } else {
-            return t;
+router.get('/', async (req, res) => {
+    const api = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);
+    const mapped = await api.data.map(r => {
+        return {
+            temperament: r.temperament
         };
-    })});
-    const temperament = mapped.map(t => {
-        for(let i = 0; i < t?.length; i++) return t[i];
     });
-    const unique = [...new Set(temperament)];
-    unique.forEach(t => {
+
+    const temp = mapped.map(t => {
+        return t.temperament
+    });
+    const temperaments = temp.join(', ').split(', ');
+
+    const unique = [...new Set(temperaments)];
+    const ordered = [...unique].sort();
+
+    ordered.forEach(t => {
         if(t){
         Temperament.findOrCreate({
             where: { name: t }
@@ -30,4 +32,5 @@ router.get('/', async (req, res) =>{
     });
     const allTemperaments = await Temperament.findAll();
     res.status(200).send(allTemperaments);
-})
+});
+

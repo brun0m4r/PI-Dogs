@@ -4,11 +4,20 @@
     height: 100%;
     width: 100%;
     /* background-image: url('https://st2.depositphotos.com/5448718/10569/v/600/depositphotos_105699978-stock-illustration-vector-seamless-pattern-with-cat.jpg'); */
-    background: url("https://st2.depositphotos.com/5448718/10569/v/600/depositphotos_105699982-stock-illustration-vector-seamless-pattern-with-cat.jpg");
+    background: url("https://image.freepik.com/foto-gratis/coleccion-retratos-adorables-cachorros_53876-145628.jpg");
+}
+
+.welcome {
+    font-family: 'Sigmar One', cursive;
+    font-size: 100px;
+    color: #ff0;
+    box-shadow: 0 10px 30px #000;
+    text-shadow: 0 10px 30px #000;
+    margin: auto;
 }
 
 .container {
-    position: absolute;
+    margin: auto;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
@@ -17,24 +26,52 @@
     color: #000;
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
-    background-color: rgba(250, 240, 208, 0.322);
+    background-color: rgba(0, 0, 0, 0.322);
     border-radius: 15px;
     width: 500px;
-    height: 250px;
+    height: 400px;
+    box-shadow: 0 10px 30px #000;
+    margin-top: 45px;
+}
+
+.link {
+    margin-left: auto;
+    margin-right: auto;
+    text-decoration: none;
+    color: #000;
+    font-size: 20px;
+    width: 200px;
 }
 
 .button {
-    width: 150px;
-    height: 25px;
-    text-decoration: none;
-    color: rgb(0, 0, 0);
+    width: 200px;
+    background: rgb(255, 234, 49);
+    color: #000;
+    display: inline-block;
     border: none;
-    border-radius: 5px;
-    background-color: rgba(250, 240, 208, 0.322);
-    transition: .5s ease;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, .5);
+    transition: .3s;
+    animation: pulse 1.5s infinite;
+    font-family: 'Sigmar One', cursive;
 }
 
 .button:hover {
-    width: 200px;
-    height: 50px;
+    background: rgb(255, 247, 178);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(.99);
+        box-shadow: 0 0 0 0 rgba(256, 256, 256, .5);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 25px rgba(256, 256, 256, 0);
+    }
+    100% {
+        transform: scale(.99);
+        box-shadow: 0 0 0 0 rgba(256, 256, 256, 0);
+    }
 }

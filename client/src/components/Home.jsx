@@ -24,7 +24,7 @@ export default function Home () {
     let indexOfFirstDog = indexOfLastDog - dogsPerPage;
     let currentDogs = dogs.slice(indexOfFirstDog, indexOfLastDog);
 
-    const paged = numPage => {
+    const paged = (numPage) => {
         setCurrentPage(numPage);
     }
 
@@ -51,15 +51,15 @@ export default function Home () {
                 {
                     dogs.length || !loading ? (
                         <div>
-                            <img className={s.jake} src="https://i.gifer.com/1fJm.gif"/>
+                            <Link className={s.slashJake} to='/Jake'><img className={s.jake} src="https://i.gifer.com/1fJm.gif"/></Link>
                             <div className={s.container}>
                                 <Filter setOrderWeight={setOrderWeight} setOrderName={setOrderName} temperaments={temperaments} paged={paged} setCurrentPage={setCurrentPage} />
                                 <button className={s.button}><Link className={s.link} to='/breed'>Create a new breed</Link></button>
                                 <button className={s.button} onClick={e => handleClick(e)}>Refresh Dogs</button>
-                                <h1>YOU ARE IN HOME</h1>
+                                <h1 className={s.title}>YOU ARE IN HOME</h1>
                                 <Paged dogs={dogs.length} dogsPerPage={dogsPerPage} paged={paged} />
                             </div>
-                            <SearchBar newLoading={newLoading} setCurrentPage={setCurrentPage} paged={paged} />
+                            <SearchBar newLoading={newLoading} currentPage={currentPage} setCurrentPage={setCurrentPage} paged={paged} />
                             <div>
                             {
                                 loading || !currentDogs.length
@@ -75,7 +75,7 @@ export default function Home () {
                             </div>
                             {
                                 !dogs.length &&
-                                <h1>Dogs not found</h1>
+                                <h1 className={s.noDogs}>Dogs not found</h1>
                             }
                         </div>
                     ) :

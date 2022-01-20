@@ -1,0 +1,67 @@
+.title {
+    font-family: 'Amatic SC', cursive;
+    color: rgb(0, 0, 0);
+    font-size: 70px;
+    text-shadow: 0 10px 30px #000;
+    margin: auto;
+}
+
+.text {
+    background: rgba(255, 255, 255, 0.575);
+    width: 500px;
+    flex-direction: column;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    box-shadow: 0 10px 30px #000;
+    text-shadow: 0 20px 30px #000;
+    padding: 15px;
+    color: #000;
+    font-size: 30px;
+    border-radius: 50px;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    font-family: 'DM Mono', monospace;
+    font-size: 20px;
+}
+
+.container {
+    position: absolute;
+    background-image: url('https://wallpaperaccess.com/full/3340407.png');
+    height: 100%;
+    width: 100%;
+}
+
+.link {
+    text-decoration: none;
+    background: rgba(218, 218, 218, 0.911);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    padding: 10px;
+    font-family: 'DM Mono', monospace;
+    color: #000;
+    border-radius: 5px;
+    position: absolute;
+    top: 1%;
+    left: 1%;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(.99);
+        box-shadow: 0 0 0 0 rgba(256, 256, 256, .5);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 25px rgba(256, 256, 256, 0);
+    }
+    100% {
+        transform: scale(.99);
+        box-shadow: 0 0 0 0 rgba(256, 256, 256, 0);
+    }
+}
+
+
+

@@ -30,16 +30,22 @@ export default function Details() {
             </div>
         )
         : (
-            <div className={s.card}>
-                <Link to='/home'><button>Go home</button></Link>
-                <h1>breed: {breed[0].name}</h1>
-                <img src={breed[0].image} alt="breed without img" className={s.img} />
-                <p>Temperament: {Array.isArray(breed[0].temperament) ? breed[0].temperament.map(t => t.name).join(', ') : breed[0].temperament}</p>
-                <p>Height Max: {breed[0].height_max}cm</p>
-                <p>Height Min: {breed[0].height_min}cm</p>
-                <p>Weight Max: {breed[0].weight_max}Kg</p>
-                <p>Weight Min: {breed[0].weight_min}Kg</p>
-                <p>Life Span: {breed[0].life_span}</p>
+            <div>
+                <div className={s.card}>
+                    <button className={s.button}><Link className={s.link} to='/home'>Go home</Link></button>
+                    <h1 className={s.title}>Breed: {breed[0].name}</h1>
+                    <div className={s.row}>
+                        <img className={s.img} src={breed[0].image} alt="breed without img" className={s.img} />
+                        <div className={s.column}>
+                            <label>{breed[0].temperament ? `Temperament: ${Array.isArray(breed[0].temperament) ? breed[0].temperament.map(t => t.name).join(', ') : breed[0].temperament}` : ``}</label>
+                            <label>Height Max: {breed[0].height_max}cm</label>
+                            <label>Height Min: {breed[0].height_min}cm</label>
+                            <label>Weight Max: {breed[0].weight_max}Kg</label>
+                            <label>Weight Min: {breed[0].weight_min}Kg</label>
+                            <label>{breed[0].life_span ? `Life Span: ${breed[0].life_span}` : ``}</label>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
         }

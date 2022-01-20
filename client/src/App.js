@@ -4,6 +4,7 @@ import LandingPage from './components/LandingPage';
 import Home from './components/Home';
 import Details from './components/Details';
 import BreedCreate from './components/BreedCreate';
+import Jake from './components/Jake';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route exact path='/home' component={Home}></Route>
           <Route path='/home/:id' component={Details} />
           <Route path='/breed' component={BreedCreate} />
+          <Route path='/Jake' component={Jake} />
         </Switch>
       </div>
     </Router>

@@ -8,23 +8,94 @@
     border-radius: 20px;
 }
 
-.container {
+
+s.container {
     display: flex;
-    flex-direction: row;
     justify-content: center;
 }
 
 .card {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 97%;
+    width: 98%;
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
-    max-width: 800px;
-    padding: 10px;
-    background-color: rgba(27, 27, 27, 0.7);
-    border-radius: 30px;
-    margin: 20px;
-    top: -100%;
+    padding-bottom: 25px;
+    border-radius: 20px;
+    font-family: 'Dongle', sans-serif;
+    font-size: 30px;
     transition: .3s ease;
-    top: 100%;
+}
+
+.row {
+    display: flex;
+    background: url('https://image.freepik.com/foto-gratis/coleccion-retratos-adorables-cachorros_53876-145628.jpg');
+    padding: 20px;
+    border-radius: 10px;
+    margin: auto;
+    width: 80%;
+    border-top: 20px solid rgb(211, 211, 211);
+    height: 700px;
+}
+
+.column {
+    background: rgba(255, 255, 255, 0.376);
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: 30%;
+    flex-direction: column;
+    box-shadow: 0 10px 30px #000;
+    text-shadow: 0 20px 30px #000;
+    padding: 15px;
+    color: #000;
+    font-size: 30px;
+    border-radius: 50px;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    font-family: 'DM Mono', monospace;
+    font-size: 20px;
+    max-width: 700px;
+}
+
+
+.button {
+    margin: auto;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border: none;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.863);
+    height: 40px;
+    width: 80px;
     font-family: 'Dongle', sans-serif;
     font-size: 25px;
+    transition: all .3s;
+}
+
+.button:hover {
+    height: 50px;
+    width: 90px;
+    background: rgba(41, 41, 41, 0.863);
+}
+
+.title {
+    font-family: 'Sigmar One', cursive;
+    color: #ff0;
+    font-size: 50px;
+    text-shadow: 0 10px 30px #000;
+    margin: auto;
+}
+
+.img {
+    margin: auto;
+}
+
+.link {
+    text-decoration: none;
+    color: #fff;
 }

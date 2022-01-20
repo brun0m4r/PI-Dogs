@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    background: rgb(255, 160, 35);
+    background: rgba(245, 168, 67, 0.952);
     border-radius: 10px;
 }
 .numbers {
@@ -13,7 +13,7 @@
     border-radius: 5px;
 }
 
-.numbers:focus {
+.active {
     background: rgb(95, 64, 29);
 }
 

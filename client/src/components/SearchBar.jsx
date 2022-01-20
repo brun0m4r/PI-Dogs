@@ -30,7 +30,7 @@ export default function SearchBar({ newLoading, setCurrentPage, paged }) {
                 value={search}
                 />
                 <button className={s.button} type="submit" onClick={e => handleClick(e)}>
-                    <img className={s.img} src="https://cdn-icons.flaticon.com/png/128/5007/premium/5007726.png?token=exp=1642011430~hmac=93c29cb28876c653bc3d2cc3c58c4ca0" />
+                    <img className={s.img} src="https://cdn-icons.flaticon.com/png/512/4924/premium/4924593.png?token=exp=1642612260~hmac=cb4673c5f068d58466e62c69afab0200" />
                 </button>
             </div>
         </div>

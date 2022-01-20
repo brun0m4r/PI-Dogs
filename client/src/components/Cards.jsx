@@ -17,7 +17,6 @@ export default function Cards({ dogs, remove, newLoading }) {
         <div className={s.container}>
             {
                 dogs.map(d => {
-                    console.log(d);
                     return(
                         <CardDog
                             key={d.id}

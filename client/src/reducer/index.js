@@ -28,7 +28,7 @@ const reducer = (state = initialState, action) => {
             }
         case TEMPERAMENTS_DOGS:
             const { allDogs } = state;
-            const temperament = action.payload === 'All' ? allDogs : allDogs.filter(d => d.temperament?.includes(action.payload));
+            const temperament = action.payload === 'All' ? allDogs : allDogs.filter(d => d.temperament?.includes(action.payload) || d.temperaments?.find(t => t.name === action.payload));
             return {
                 ...state,
                 dogs: temperament
